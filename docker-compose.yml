@@ -1,0 +1,30 @@
+version: "3.7"
+services:
+  my-mongo:
+    image: mongo
+    networks: 
+        - network
+    volumes:
+        - mongo_data:/data/db
+
+
+    
+   
+    
+  my-flask:
+    build: .
+    ports:
+      - "5006:5000"
+    networks: 
+      - network
+    volumes:
+      - ./TEST.txt:/app/TEST.txt
+
+
+networks:
+  network:
+    driver: bridge
+
+volumes:
+  mongo_data:
+
